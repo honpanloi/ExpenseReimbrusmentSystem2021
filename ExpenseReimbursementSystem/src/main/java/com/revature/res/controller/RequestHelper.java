@@ -6,6 +6,8 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.revature.res.util.HibernateSessionFactory;
+
 public class RequestHelper {
 	
 	public static Object processGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -42,6 +44,8 @@ public class RequestHelper {
 			
 			System.out.println(email);
 			System.out.println(password);
+			
+			HibernateSessionFactory.getSession();
 			
 			break;
 

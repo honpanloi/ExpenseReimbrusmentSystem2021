@@ -1,0 +1,38 @@
+@charset "ISO-8859-1";
+
+body {
+	margin: 0;
+	padding: 0;
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center;
+	font-family: Verdana;
+}
+
+p {
+	color: rgb(82, 82, 82);
+	text-shadow: 1px 1px 6px #919191;
+	text-align: center;
+}
+
+button {
+	font-size:20px;
+	padding:4px 2px;
+	margin-left: calc(50% - 250px);
+	margin-top: 10px;
+    margin-bottom: 10px;
+	border-radius: 0.2em;
+	width:500px;
+	text-shadow: 1px 1px 5px #919191;
+	box-shadow: 1px 1px 5px #919191;
+	font-family: Verdana;
+	color: rgb(82, 82, 82);
+}
+
+#main_div {
+	margin: 0;
+  	position: absolute;
+  	top: 50%;
+ 	left: 50%;
+  	transform: translate(-50%, -50%);
+}
