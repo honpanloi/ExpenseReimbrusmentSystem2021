@@ -2,7 +2,10 @@ package com.revature.res.models;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -14,9 +17,23 @@ public class Login {
 	private String email;
 	@Column
 	private String password;
+	
+	@OneToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "empl_id")
+	private Employee employee;
+	
+	
+	public Employee getEmployee() {
+		return employee;
+	}
+	public void setEmployee(Employee employee) {
+		this.employee = employee;
+	}
+	
 	public String getEmail() {
 		return email;
 	}
+	
 	public void setEmail(String email) {
 		this.email = email;
 	}
@@ -26,18 +43,12 @@ public class Login {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	public Login(String email, String password) {
-		super();
-		this.email = email;
-		this.password = password;
-	}
+	
 	public Login() {
 		
 	}
-	@Override
-	public String toString() {
-		return "Login [email=" + email + ", password=" + password + "]";
-	}
+
+	
 	
 	
 	

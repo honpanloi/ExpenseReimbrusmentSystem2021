@@ -6,9 +6,17 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.revature.res.exception.BusinessException;
+import com.revature.res.models.Employee;
+import com.revature.res.service.EmployeeLoginService;
+import com.revature.res.serviceImpl.EmployeeLoginServiceImpl;
 import com.revature.res.util.HibernateSessionFactory;
 
+
+
 public class RequestHelper {
+	
+	private static EmployeeLoginService employeeLoginService;
 	
 	public static Object processGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
@@ -42,10 +50,18 @@ public class RequestHelper {
 			final String email = request.getParameter("useremail");
 			final String password = request.getParameter("userpass");
 			
-			System.out.println(email);
-			System.out.println(password);
 			
-			HibernateSessionFactory.getSession();
+			Employee employee = null;
+			employeeLoginService = new EmployeeLoginServiceImpl();
+			try {
+				employee = employeeLoginService.getEmployeeByLogin(email, password);
+				response.getWriter().write(employee.toString());
+			} catch (BusinessException e) {
+				e.printStackTrace();
+				response.getWriter().write(e.getMessage());
+			}
+			
+			
 			
 			break;
 

@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
@@ -15,10 +16,10 @@ public class Employee {
 	@Id
 	@Column
 	@GeneratedValue(generator = "ers_2021.employee_id_seq", strategy = GenerationType.AUTO)
-	//@SequenceGenerator(allocationSize = 1, name = "ers_2021.employee_id_seq", sequenceName = "ers_2021.employee_id_seq")
+	@SequenceGenerator(allocationSize = 1, name = "ers_2021.employee_id_seq", sequenceName = "ers_2021.employee_id_seq")
 	private long empl_id;
 	@Column
-	private long direct_manager_empl_id;
+	private Long direct_manager_empl_id;
 	@Column
 	private String position;
 	@Column
@@ -29,6 +30,11 @@ public class Employee {
 	private long prim_phone;
 	@Column
 	private double amount_reimbursed_of_the_year;
+	@Column
+	private String first_name;
+	@Column
+	private String last_name;
+	
 	public long getEmpl_id() {
 		return empl_id;
 	}
