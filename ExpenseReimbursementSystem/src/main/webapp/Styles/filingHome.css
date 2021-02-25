@@ -7,6 +7,7 @@ body {
 	background-repeat: no-repeat;
 	background-position: center;
 	font-family: Verdana;
+	background-image: url("/ExpenseReimbursementSystem/Images/background.jpg");
 }
 
 p {
@@ -23,7 +24,7 @@ button {
     margin-bottom: 10px;
 	border-radius: 0.2em;
 	width:500px;
-	text-shadow: 1px 1px 5px #919191;
+	text-shadow: 1px 1px 3px #919191;
 	box-shadow: 1px 1px 5px #919191;
 	font-family: Verdana;
 	color: rgb(82, 82, 82);

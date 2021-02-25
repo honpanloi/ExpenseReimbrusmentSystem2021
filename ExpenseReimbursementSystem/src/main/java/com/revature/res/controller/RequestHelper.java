@@ -5,12 +5,12 @@ import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.revature.res.exception.BusinessException;
 import com.revature.res.models.Employee;
 import com.revature.res.service.EmployeeLoginService;
 import com.revature.res.serviceImpl.EmployeeLoginServiceImpl;
-import com.revature.res.util.HibernateSessionFactory;
 
 
 
@@ -21,11 +21,15 @@ public class RequestHelper {
 	public static Object processGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		final String RESOURCE = getURI(request);
-		
+		System.out.println(RESOURCE);
 		switch (RESOURCE) {
-		case "/login":
-			
-			return "I'm logging in";
+		case "/api/logout":
+			HttpSession session = request.getSession(false);
+			if(session!=null) {
+				session.invalidate();
+			}
+			response.sendRedirect("/ExpenseReimbursementSystem/index.html");
+			return null;
 
 		default:
 			response.setStatus(404);
@@ -55,13 +59,25 @@ public class RequestHelper {
 			employeeLoginService = new EmployeeLoginServiceImpl();
 			try {
 				employee = employeeLoginService.getEmployeeByLogin(email, password);
-				response.getWriter().write(employee.toString());
+				
 			} catch (BusinessException e) {
 				e.printStackTrace();
 				response.getWriter().write(e.getMessage());
 			}
 			
-			
+			if(employee.isIs_manager()) {
+				HttpSession session = request.getSession();
+				session.setAttribute("email", email);
+				session.setAttribute("isManager", true);
+				response.sendRedirect("/ExpenseReimbursementSystem/Pages/managerView.html");
+				
+			}else {
+				HttpSession session = request.getSession();
+				session.setAttribute("email", email);
+				session.setAttribute("isManager", false);
+				response.sendRedirect("/ExpenseReimbursementSystem/Pages/filingHome.html");
+				
+			}
 			
 			break;
 

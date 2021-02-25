@@ -34,17 +34,18 @@ public class Employee {
 	private String first_name;
 	@Column
 	private String last_name;
-	
+	@Column
+	private boolean is_manager;
 	public long getEmpl_id() {
 		return empl_id;
 	}
 	public void setEmpl_id(long empl_id) {
 		this.empl_id = empl_id;
 	}
-	public long getDirect_manager_empl_id() {
+	public Long getDirect_manager_empl_id() {
 		return direct_manager_empl_id;
 	}
-	public void setDirect_manager_empl_id(long direct_manager_empl_id) {
+	public void setDirect_manager_empl_id(Long direct_manager_empl_id) {
 		this.direct_manager_empl_id = direct_manager_empl_id;
 	}
 	public String getPosition() {
@@ -77,8 +78,26 @@ public class Employee {
 	public void setAmount_reimbursed_of_the_year(double amount_reimbursed_of_the_year) {
 		this.amount_reimbursed_of_the_year = amount_reimbursed_of_the_year;
 	}
-	public Employee(long empl_id, long direct_manager_empl_id, String position, String email, Date dob, long prim_phone,
-			double amount_reimbursed_of_the_year) {
+	public String getFirst_name() {
+		return first_name;
+	}
+	public void setFirst_name(String first_name) {
+		this.first_name = first_name;
+	}
+	public String getLast_name() {
+		return last_name;
+	}
+	public void setLast_name(String last_name) {
+		this.last_name = last_name;
+	}
+	public boolean isIs_manager() {
+		return is_manager;
+	}
+	public void setIs_manager(boolean is_manager) {
+		this.is_manager = is_manager;
+	}
+	public Employee(long empl_id, Long direct_manager_empl_id, String position, String email, Date dob, long prim_phone,
+			double amount_reimbursed_of_the_year, String first_name, String last_name, boolean is_manager) {
 		super();
 		this.empl_id = empl_id;
 		this.direct_manager_empl_id = direct_manager_empl_id;
@@ -87,7 +106,11 @@ public class Employee {
 		this.dob = dob;
 		this.prim_phone = prim_phone;
 		this.amount_reimbursed_of_the_year = amount_reimbursed_of_the_year;
+		this.first_name = first_name;
+		this.last_name = last_name;
+		this.is_manager = is_manager;
 	}
+	
 	public Employee() {
 		
 	}
@@ -95,7 +118,10 @@ public class Employee {
 	public String toString() {
 		return "Employee [empl_id=" + empl_id + ", direct_manager_empl_id=" + direct_manager_empl_id + ", position="
 				+ position + ", email=" + email + ", dob=" + dob + ", prim_phone=" + prim_phone
-				+ ", amount_reimbursed_of_the_year=" + amount_reimbursed_of_the_year + "]";
+				+ ", amount_reimbursed_of_the_year=" + amount_reimbursed_of_the_year + ", first_name=" + first_name
+				+ ", last_name=" + last_name + ", is_manager=" + is_manager + "]";
 	}
+	
+	
 	
 }

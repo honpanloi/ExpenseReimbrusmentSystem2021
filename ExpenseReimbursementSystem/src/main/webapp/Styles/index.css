@@ -18,7 +18,7 @@ h1 {
 
 p {
 	color: rgb(82, 82, 82);
-	text-shadow: 1px 1px 6px #919191;
+	text-shadow: 1px 1px 3px #919191;
 	text-align: center;
 }
 
@@ -54,7 +54,7 @@ p {
     margin-bottom: 10px;
 	border-radius: 0.2em;
 	width:100px;
-	text-shadow: 1px 1px 5px #919191;
+	text-shadow: 1px 1px 3px #919191;
 	box-shadow: 1px 1px 5px #919191;
 	font-family: Verdana;
 	color: rgb(82, 82, 82);

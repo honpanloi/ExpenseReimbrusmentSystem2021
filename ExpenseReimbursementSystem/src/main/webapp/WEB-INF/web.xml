@@ -17,4 +17,26 @@
     <servlet-name>DispatcherServlet</servlet-name>
     <url-pattern>/api/*</url-pattern>
   </servlet-mapping>
+  <filter>
+    <display-name>AuthenticationFilter</display-name>
+    <filter-name>AuthenticationFilter</filter-name>
+    <filter-class>com.revature.res.controller.AuthenticationFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>AuthenticationFilter</filter-name>
+    <url-pattern>/Pages/*</url-pattern>
+  </filter-mapping>
+  <filter>
+    <display-name>ManagerFilter</display-name>
+    <filter-name>ManagerFilter</filter-name>
+    <filter-class>com.revature.res.controller.ManagerFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>ManagerFilter</filter-name>
+    <url-pattern>/Pages/managerView.html</url-pattern>
+  </filter-mapping>
+  
+  <session-config>
+  	<session-timeout>15</session-timeout>
+  </session-config>
 </web-app>
