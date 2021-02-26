@@ -46,8 +46,6 @@ public class AuthenticationFilter implements Filter {
 			httpResonse.sendRedirect("/ExpenseReimbursementSystem/index.html");
 		}
 		
-		
-		
 		// pass the request along the filter chain
 		chain.doFilter(request, response);
 	}

@@ -7,16 +7,21 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.util.JSONPObject;
 import com.revature.res.exception.BusinessException;
 import com.revature.res.models.Employee;
-import com.revature.res.service.EmployeeLoginService;
-import com.revature.res.serviceImpl.EmployeeLoginServiceImpl;
+import com.revature.res.service.EmployeeCrudService;
+import com.revature.res.service.LoginService;
+import com.revature.res.serviceImpl.EmployeeCrudServiceImpl;
+import com.revature.res.serviceImpl.LoginServiceImpl;
 
 
 
 public class RequestHelper {
 	
-	private static EmployeeLoginService employeeLoginService;
+	private static LoginService employeeLoginService;
+	private static EmployeeCrudService employeeCrudService;
 	
 	public static Object processGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
@@ -30,7 +35,28 @@ public class RequestHelper {
 			}
 			response.sendRedirect("/ExpenseReimbursementSystem/index.html");
 			return null;
-
+		case "/api/viewProfile":
+			HttpSession session1 = request.getSession(false);
+			String email = null;
+			if(session1!=null) {
+				email = (String) session1.getAttribute("email");
+			}
+			if(email==null) {
+				response.sendRedirect("/ExpenseReimbursementSystem/index.html");
+			}
+			
+			employeeCrudService = new EmployeeCrudServiceImpl();
+			try {
+				Employee employee = employeeCrudService.getEmployeeByEmail(email);	
+				session1.setAttribute("employee", employee);
+			} catch (BusinessException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			response.sendRedirect("/ExpenseReimbursementSystem/Pages/viewProfile.html");
+			
+			return null;
 		default:
 			response.setStatus(404);
 			return "Sorry. The resource you have requested does not exist.";
@@ -56,13 +82,17 @@ public class RequestHelper {
 			
 			
 			Employee employee = null;
-			employeeLoginService = new EmployeeLoginServiceImpl();
+			employeeLoginService = new LoginServiceImpl();
 			try {
 				employee = employeeLoginService.getEmployeeByLogin(email, password);
 				
 			} catch (BusinessException e) {
 				e.printStackTrace();
 				response.getWriter().write(e.getMessage());
+			}
+			
+			if(employee==null) {
+				response.sendRedirect("/ExpenseReimbursementSystem/index.html");
 			}
 			
 			if(employee.isIs_manager()) {

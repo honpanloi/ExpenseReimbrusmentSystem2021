@@ -7,14 +7,13 @@ import org.hibernate.Transaction;
 import com.revature.res.exception.BusinessException;
 import com.revature.res.models.Employee;
 import com.revature.res.models.Login;
-import com.revature.res.repository.EmployeeLoginRepository;
+import com.revature.res.repository.LoginRepository;
 import com.revature.res.util.HibernateSessionFactory;
 
-public class EmployeeLoginRepositoryImpl implements EmployeeLoginRepository{
+public class LoginRepositoryImpl implements LoginRepository{
 
 	@Override
 	public Employee getEmployeeByLogin(String email, String password) throws BusinessException {
-		System.out.println("inside reopImpl");
 		
 		Employee employee = null;
 		
@@ -29,16 +28,11 @@ public class EmployeeLoginRepositoryImpl implements EmployeeLoginRepository{
 					.setParameter("email", email)
 					.setParameter("password", password)
 					.getSingleResult();
-	
-			System.out.println(login.toString()+11111112);
 			
 			tx.commit();
 			
 			employee = login.getEmployee();
 			
-			if(employee == null){
-				throw new BusinessException("Your email or password is incorrect. Please try again.");
-			}
 			
 		} catch (HibernateException e) {
 			e.printStackTrace();

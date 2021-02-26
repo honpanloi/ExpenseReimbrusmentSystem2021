@@ -35,8 +35,17 @@
     <filter-name>ManagerFilter</filter-name>
     <url-pattern>/Pages/managerView.html</url-pattern>
   </filter-mapping>
-  
   <session-config>
-  	<session-timeout>15</session-timeout>
+    <session-timeout>15</session-timeout>
   </session-config>
+  <servlet>
+    <description></description>
+    <display-name>FilingHomeAJAXServlet</display-name>
+    <servlet-name>FilingHomeAJAXServlet</servlet-name>
+    <servlet-class>com.revature.res.controller.FilingHomeAJAXServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>FilingHomeAJAXServlet</servlet-name>
+    <url-pattern>/fileNewRequest</url-pattern>
+  </servlet-mapping>
 </web-app>

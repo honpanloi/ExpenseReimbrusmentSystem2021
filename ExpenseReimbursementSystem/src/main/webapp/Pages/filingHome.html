@@ -5,7 +5,7 @@
 	<title>Expense Reimbursement System</title>
 	<link rel="stylesheet" href="/ExpenseReimbursementSystem/Styles/filingHome.css"></link>
 </head>
-<body style = 'background-image: url("/ExpenseReimbursementSystem/Images/background.jpg");'>
+<body>
 
 	<div id = "main_div">
 	
@@ -14,10 +14,16 @@
 		<button>Upload a receipt for a request</button>
 		<button>View my pending reimbursements</button>
 		<button>View my resolved reimbursements</button>
-		<button>View my profile</button>
-		<button>Log out</button>
+		
+		<form id="viewProfile" method="get" action="/ExpenseReimbursementSystem/api/viewProfile">
+            <button>View my profile</button>
+		</form>
+		
+		<form id="log_out" method="get" action="/ExpenseReimbursementSystem/api/logout">
+            <button>Log out</button>
+		</form>
 	
 	</div>
-	
+	<script src="/ExpenseReimbursementSystem/Scripts/filingHome.js"></script>
 </body>
 </html>

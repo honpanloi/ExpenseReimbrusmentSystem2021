@@ -7,15 +7,15 @@ import org.junit.jupiter.api.Test;
 
 import com.revature.res.exception.BusinessException;
 import com.revature.res.models.Employee;
-import com.revature.res.serviceImpl.EmployeeLoginServiceImpl;
+import com.revature.res.serviceImpl.LoginServiceImpl;
 
-class EmployeeLoginServiceTest {
+class LoginServiceTest {
 
-	static EmployeeLoginService employeelonginService;
+	static LoginService employeelonginService;
 	
 	@BeforeAll
 	static void setup() {
-		employeelonginService = new EmployeeLoginServiceImpl();
+		employeelonginService = new LoginServiceImpl();
 	}
 	
 	
