@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="ISO-8859-1">
+	<title>Expense Reimbursement System</title>
+	<link rel="stylesheet" href="/ExpenseReimbursementSystem/Styles/fileNewReimbursement.css"></link>
+</head>
+<body>
+	<div id = "main_div">
+		
+		<div>
+			<img id = "dollar_picture" src="/ExpenseReimbursementSystem/Images/Dollar.png" alt="This is a picture">
+		</div>
+		
+		
+		<p id = "center_text">Please fill the following form.</p>
+		
+		<div id = "form_div">
+
+			<form id="form" method="post" action="/ExpenseReimbursementSystem/api/newReimbursement">
+
+				<p id ="discription">Employee who is filing:</p>
+				<p id = "info_name" class="info">loading...</p>
+				<p id ="discription">Employee's ID:</p>
+				<p id = "info_empl_id" class="info">loading...</p>
+				<p id ="discription">Will be reviewed by:</p>
+				<p id = "info_manger_name" class="info">loading...</p>
+				
+				<div class = "full"><p id ="discription">Event occurred on:</p></div>
+				<input id = "input_date" type="date" name="event_occurred" required/>
+				<div class = "full"><p id ="discription">The amount of the reimbursement:</p></div> 
+	            <input id = "input_amount" type="number" placeholder=$5.0 name="reimb_amount" min = 1 step="any" required/>
+	            
+	            <div class = "full">
+	            	<br>
+				</div>
+
+	            <div class = "full"><p id ="discription">*You will need to submit a receipt to complete a request.</p></div> 
+	            <button class = "button_submit">Submit</button>
+	            
+			</form>
+
+		</div>
+		
+		<p id ="discription">The amount you are reimbursed this year:</p>
+		<p id = "info_amount_reimb" class="info">loading...</p>
+		
+		<div>
+		<br>
+		</div>
+		
+		<p id ="center_text">If you wish not to submit:</p>
+		<form id= "main_menu_button" method="get" action="/ExpenseReimbursementSystem/Pages/filingHome.html">
+			<button class = "main">Main Menu</button>
+		</form>
+	
+	</div>
+
+	<script src="/ExpenseReimbursementSystem/Scripts/fileNewReimbursement.js"></script>
+</body>
+</html>

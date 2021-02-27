@@ -14,14 +14,22 @@ button {
 	font-size:20px;
 	padding:4px 2px;
 	margin-left: calc(50% - 70px);
-	margin-top: 50px;
+	margin-top: 10px;
     margin-bottom: 10px;
 	border-radius: 0.2em;
 	width:140px;
-	text-shadow: 1px 1px 3px #919191;
+	text-shadow: 1px 1px 1px #919191;
 	box-shadow: 1px 1px 5px #919191;
 	font-family: Verdana;
 	color: rgb(82, 82, 82);
+}
+
+button.main {
+	margin-top: 5px;
+}
+
+button.button_submit {
+	color : rgb(59, 156, 88)
 }
 
 #main_div {
@@ -30,34 +38,27 @@ button {
   	top: 50%;
  	left: 50%;
   	transform: translate(-50%, -50%);
-  	
-/*   	border-style: solid; */
-/* 	border-radius: 1em; */
-/* 	border-width: 2px; */
-/* 	border-color: rgb(222, 222, 222); */
-/* 	padding: 20px; */
 }
 
-#profile_picture {
+#dollar_picture {
 	width: 150px;
 	height: 150px;
 	border: 1px solid rgb(235, 235, 235);
-	border-color: black;
 	border-radius: 1em;
-	margin-left: 30px;
-	margin-right: 30px;
 	margin-bottom: 30px;
+	margin-left: 50px;
 	box-shadow: 1px 1px 5px #919191;
+	align-self: center;
 }
-
 
 #discription {
 	font-size: 10px;
+	width: 100%;
 }
 
 p {
 	color: rgb(82, 82, 82);
-	text-shadow: 1px 1px 3px #919191;
+	text-shadow: 1px 1px 2px #cccccc;
 	margin-top: 0px;
 	margin-bottom: 0px;
 }
@@ -68,9 +69,35 @@ p.info {
 	margin-bottom: 5px;
 }
 
+#fileNewReimbursement {
+	margin-top: 10px;
+}
 
+#form_div {
+	border-style: solid;
+	border-radius: 1em;
+	border-width: 2px;
+	border-color: rgb(222, 222, 222);
+	padding: 20px;
+	margin-top: 20px;
+	margin-bottom: 20px;
+	width: 220px;
+	background-color: rgb(235, 235, 235);
+	box-shadow: 1px 1px 5px #919191;
+}
 
-#input_date {
+#center_text {
+	text-align: center;
+	width: 100%;
+}
+
+input {
+	margin: 5px;
+	width: 120px;
 	float: right;
-	clear: both;
+}
+
+div.full {
+	width: 100%;
+	display: inline-block;
 }

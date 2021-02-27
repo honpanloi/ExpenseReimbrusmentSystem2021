@@ -17,4 +17,11 @@ public class EmployeeCrudServiceImpl implements EmployeeCrudService {
 		return employee;
 	}
 
+	@Override
+	public Employee getEmployeeByID(long empl_id) throws BusinessException {
+		Employee employee = null;
+		employee = employeeCrudRepository.getEmployeeByID(empl_id);
+		return employee;
+	}
+
 }

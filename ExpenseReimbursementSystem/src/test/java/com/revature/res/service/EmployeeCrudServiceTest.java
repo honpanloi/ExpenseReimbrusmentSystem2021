@@ -33,5 +33,23 @@ class EmployeeCrudServiceTest {
 		
 		System.out.println(employee.toString());
 	}
+	
+	@Test
+	void testGetEmployeeByID() {
+		long empl_id = 4;
+		
+		Employee employee = null;
+		
+		try {
+			employee = employeeCrudService.getEmployeeByID(empl_id);
+		} catch (BusinessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		assertNotNull(employee);
+		
+		System.out.println(employee.toString());
+	}
 
 }

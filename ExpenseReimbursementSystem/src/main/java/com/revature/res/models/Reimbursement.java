@@ -10,6 +10,8 @@ import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.ColumnDefault;
+
 @Entity
 @Table(name = "reimbursement", schema = "ers_2021")
 public class Reimbursement {
@@ -23,6 +25,7 @@ public class Reimbursement {
 	@Column
 	private long process_by_empl_id;
 	@Column
+	@ColumnDefault("Pending")
 	private String reimb_status;
 	@Column
 	private String time_requested;

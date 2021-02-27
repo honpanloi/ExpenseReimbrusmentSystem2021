@@ -8,9 +8,46 @@
 <body>
 
 	<div id = "main_div">
-		<img src="/ExpenseReimbursementSystem/profileImage.png" alt="Your profile picture">
+		<img id = "profile_picture" src="/ExpenseReimbursementSystem/Images/profileImage.png" alt="Your profile picture">
+		
+		
+		<p id ="discription">Full Name:</p> 
+		<p id ="info_fullName" class="info">loading...</p>
+		<p id ="discription">Date of Birth:</p>
+		<p id ="info_dob" class="info">loading...</p>
+		<p id ="discription">Phone Number:</p>
+		<p id ="info_phone" class="info">loading...</p>
+		<p id ="discription">Email:</p>
+		<p id ="info_email" class="info">loading...</p>
+		<p id ="discription">Employee ID:</p>
+		<p id ="info_id" class="info">loading...</p>
+		<p id ="discription">Position:</p>
+		<p id ="info_position" class="info">loading...</p>
+		<p id ="discription">Total amount reimbursed this year:</p>
+		<p id ="info_amount" class="info">loading...</p>
+		
+		<div>
+			<form method="get" action="/ExpenseReimbursementSystem/Pages/filingHome.html">
+				<label for="phone">Enter your phone number:</label><br />
+	
+				<input type="tel" id="phone" name="phone"
+				       pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+				       required><br />
+				
+				<small>Format: 123-456-7890</small>
+				<button>Update Phone Number</button>
+			</form>
+		</div>
+		
+		
+		
+		<form method="get" action="/ExpenseReimbursementSystem/Pages/filingHome.html">
+			<button>Main Menu</button>
+		</form>
+		
 	</div>
 	
-	<script src="/ExpenseReimbursementSystem/Scripts/filingHome.js"></script>
+	
+	<script src="/ExpenseReimbursementSystem/Scripts/viewProfile.js"></script>
 </body>
 </html>

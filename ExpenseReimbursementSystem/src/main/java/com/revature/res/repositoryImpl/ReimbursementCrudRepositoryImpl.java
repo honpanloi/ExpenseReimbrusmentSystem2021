@@ -5,15 +5,14 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 import com.revature.res.exception.BusinessException;
-import com.revature.res.models.Employee;
-import com.revature.res.repository.EmployeeCrudRepository;
+import com.revature.res.models.Reimbursement;
+import com.revature.res.repository.ReimbursementCrudRepository;
 import com.revature.res.util.HibernateSessionFactory;
 
-public class EmployeeCrudRepositoryImpl implements EmployeeCrudRepository {
+public class ReimbursementCrudRepositoryImpl implements ReimbursementCrudRepository {
 
 	@Override
-	public Employee getEmployeeByEmail(String email) throws BusinessException {
-		Employee employee = null;
+	public void fileNewReimbursement(Reimbursement reimbursement) throws BusinessException {
 		
 		Session s = null;
 		Transaction tx = null;
@@ -22,9 +21,7 @@ public class EmployeeCrudRepositoryImpl implements EmployeeCrudRepository {
 			s = HibernateSessionFactory.getSession();
 			tx = s.beginTransaction();
 		
-			employee = s.createQuery("FROM Employee e WHERE e.email = :email", Employee.class)
-					.setParameter("email", email)
-					.getSingleResult();
+			s.save(reimbursement);
 			
 			tx.commit();
 			
@@ -34,13 +31,10 @@ public class EmployeeCrudRepositoryImpl implements EmployeeCrudRepository {
 		}finally {
 			s.close();
 		}
-		
-		return employee;
+
 	}
-
-	@Override
-	public Employee getEmployeeByID(long empl_id) throws BusinessException {
-Employee employee = null;
+	
+	public void cleanTestReimbursement(Reimbursement reimbursement) {
 		
 		Session s = null;
 		Transaction tx = null;
@@ -49,9 +43,7 @@ Employee employee = null;
 			s = HibernateSessionFactory.getSession();
 			tx = s.beginTransaction();
 		
-			employee = s.createQuery("FROM Employee e WHERE e.empl_id = :empl_id", Employee.class)
-					.setParameter("empl_id", empl_id)
-					.getSingleResult();
+			s.delete(reimbursement);
 			
 			tx.commit();
 			
@@ -62,7 +54,6 @@ Employee employee = null;
 			s.close();
 		}
 		
-		return employee;
 	}
 
 }

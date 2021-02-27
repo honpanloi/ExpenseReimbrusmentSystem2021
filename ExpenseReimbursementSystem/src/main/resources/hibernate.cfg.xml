@@ -17,5 +17,6 @@
 		<property name="hibernate.hbm2ddl.auto">validate</property>
 		<mapping class="com.revature.res.models.Employee"/>
 		<mapping class="com.revature.res.models.Login"/>
+		<mapping class="com.revature.res.models.Reimbursement"/>
 	</session-factory>
 </hibernate-configuration>

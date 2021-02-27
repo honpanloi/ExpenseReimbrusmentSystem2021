@@ -5,4 +5,5 @@ import com.revature.res.models.Employee;
 
 public interface EmployeeCrudService {
 	Employee getEmployeeByEmail(String email) throws BusinessException;
+	Employee getEmployeeByID(long empl_id) throws BusinessException;
 }

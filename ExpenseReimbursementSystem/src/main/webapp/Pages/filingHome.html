@@ -10,12 +10,15 @@
 	<div id = "main_div">
 	
 		<p>I want to:</p>
-		<button>Submit a new reimbursement request</button>
+		<form id="fileNewReimbursement" method="get" action="/ExpenseReimbursementSystem/Pages/fileNewReimbursement.html">
+            <button>Submit a new reimbursement request</button>
+		</form>
+		
 		<button>Upload a receipt for a request</button>
 		<button>View my pending reimbursements</button>
 		<button>View my resolved reimbursements</button>
 		
-		<form id="viewProfile" method="get" action="/ExpenseReimbursementSystem/api/viewProfile">
+		<form id="viewProfile" method="get" action="/ExpenseReimbursementSystem/Pages/viewProfile.html">
             <button>View my profile</button>
 		</form>
 		
@@ -24,6 +27,6 @@
 		</form>
 	
 	</div>
-	<script src="/ExpenseReimbursementSystem/Scripts/filingHome.js"></script>
+<!-- 	<script src="/ExpenseReimbursementSystem/Scripts/filingHome.js"></script> -->
 </body>
 </html>
