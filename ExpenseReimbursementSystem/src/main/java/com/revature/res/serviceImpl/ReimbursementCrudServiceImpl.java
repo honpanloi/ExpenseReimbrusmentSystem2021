@@ -1,5 +1,7 @@
 package com.revature.res.serviceImpl;
 
+import java.util.List;
+
 import com.revature.res.exception.BusinessException;
 import com.revature.res.models.Reimbursement;
 import com.revature.res.repository.ReimbursementCrudRepository;
@@ -19,6 +21,20 @@ public class ReimbursementCrudServiceImpl implements ReimbursementCrudService {
 			reimbursementCrudRepository.fileNewReimbursement(reimbursement);
 		}
 		
+	}
+
+	@Override
+	public List<Reimbursement> getPendingReimbursementsByEmployeeID(long empl_id) throws BusinessException {
+		List<Reimbursement> list = null;
+		list = reimbursementCrudRepository.getPendingReimbursementsByEmployeeID(empl_id);
+		return list;
+	}
+
+	@Override
+	public List<Reimbursement> getResolvedReimbursementsByEmployeeID(long empl_id) throws BusinessException {
+		List<Reimbursement> list = null;
+		list = reimbursementCrudRepository.getResolvedReimbursementsByEmployeeID(empl_id);
+		return list;
 	}
 
 }

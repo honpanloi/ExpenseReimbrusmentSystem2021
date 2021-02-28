@@ -2,6 +2,7 @@ package com.revature.res.controller;
 
 import java.io.IOException;
 import java.sql.Date;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -48,13 +49,38 @@ public class RequestHelper {
 			Employee employee1 = getEmployeeByEmail(email1);
 			Employee manager = getEmployeeByID(employee1);
 			return manager;
-		
-		
+		case "/api/getPendingReimbursementByEmployeeID":
+			String email2 = getEmailFromSession(request, response);
+			Employee employee2 = getEmployeeByEmail(email2);
+			List<Reimbursement> list = getReimbursementByEmployeeID(employee2, false);
+			return list;
+		case "/api/getResolvedReimbursementByEmployeeID":
+			String email3 = getEmailFromSession(request, response);
+			Employee employee3 = getEmployeeByEmail(email3);
+			List<Reimbursement> list1 = getReimbursementByEmployeeID(employee3, true);
+			return list1;
 		default:
 			response.setStatus(404);
 			return "Sorry. The resource you have requested does not exist.";
 		}
 		
+	}
+
+	private static List<Reimbursement> getReimbursementByEmployeeID(Employee employee2, boolean isResolved) {
+		List<Reimbursement> list = null;
+		reimbursementCrudService = new ReimbursementCrudServiceImpl();
+		try {
+			if(isResolved) {
+				list = reimbursementCrudService.getResolvedReimbursementsByEmployeeID(employee2.getEmpl_id());
+			}else {
+				list = reimbursementCrudService.getPendingReimbursementsByEmployeeID(employee2.getEmpl_id());
+			}
+			
+		} catch (BusinessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return list;
 	}
 
 	private static Employee getEmployeeByID(Employee employee1) {

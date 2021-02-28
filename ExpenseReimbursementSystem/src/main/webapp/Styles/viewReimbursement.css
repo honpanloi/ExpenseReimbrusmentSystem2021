@@ -1,0 +1,38 @@
+@charset "ISO-8859-1";
+
+body {
+	margin: 0;
+	padding: 0;
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center;
+	font-family: Verdana;
+	background-image: url("/ExpenseReimbursementSystem/Images/background.jpg");
+}
+
+#button_div {
+	width: 100%;
+	text-align: center;
+	margin-top: 5%;
+}
+
+#vPending_btn, #vResolved_btn, #main_menu_button {
+	display: inline-block;
+}
+
+#main_div {
+	width: 100%;
+	height: 100%;
+}
+
+button {
+	font-size:16px;
+	padding:4px 2px;
+	margin: 10px;
+	border-radius: 0.2em;
+	width:140px;
+	text-shadow: 1px 1px 3px #919191;
+	box-shadow: 1px 1px 5px #919191;
+	font-family: Verdana;
+	color: rgb(82, 82, 82);
+}
