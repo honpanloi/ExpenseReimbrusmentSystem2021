@@ -5,6 +5,7 @@ import com.revature.res.models.Employee;
 import com.revature.res.repository.EmployeeCrudRepository;
 import com.revature.res.repositoryImpl.EmployeeCrudRepositoryImpl;
 import com.revature.res.service.EmployeeCrudService;
+import com.revature.res.util.Validation;
 
 public class EmployeeCrudServiceImpl implements EmployeeCrudService {
 
@@ -22,6 +23,16 @@ public class EmployeeCrudServiceImpl implements EmployeeCrudService {
 		Employee employee = null;
 		employee = employeeCrudRepository.getEmployeeByID(empl_id);
 		return employee;
+	}
+
+	@Override
+	public void updateEmployeePhoneByID(long empl_id, String phone) throws BusinessException {
+		if(Validation.isValidPhone(phone)) {
+			employeeCrudRepository.updateEmployeePhoneByID(empl_id, phone);
+		}else {
+			throw new BusinessException();
+		}
+		
 	}
 
 }

@@ -51,5 +51,29 @@ class EmployeeCrudServiceTest {
 		
 		System.out.println(employee.toString());
 	}
+	
+	@Test
+	void testUpdatePhone() {
+		long empl_id = 4;
+		
+		String phone = "111-555-4444";
+		
+		try {
+			employeeCrudService.updateEmployeePhoneByID(empl_id, phone);
+		} catch (BusinessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		try {
+			Employee employee = employeeCrudService.getEmployeeByID(empl_id);
+			
+			assertEquals(employee.getPrim_phone(), Long.parseLong(phone.replaceAll("\\D", "")));
+		} catch (BusinessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
 
 }

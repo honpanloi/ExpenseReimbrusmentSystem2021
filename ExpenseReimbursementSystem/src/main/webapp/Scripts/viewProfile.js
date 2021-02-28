@@ -20,8 +20,6 @@ function getEmployee(){
 		if(xhr.readyState === 4 && xhr.status === 200){
 			let employee = JSON.parse(xhr.response)
 			
-			
-			
 			fullname.textContent = employee.first_name + " " + employee.last_name
 			let parsedDob = new Date(employee.dob)
 			dob.textContent = parsedDob.getFullYear() + "-" + parsedDob.getMonth()+ "-" + parsedDob.getDay()
@@ -47,7 +45,32 @@ function getEmployee(){
 
 window.onload = () => {
 	getEmployee()
+	editphone_div.hidden = true;
 }
 
+let editphone_div = document.getElementById("editphone_div")
+let button_phone = document.getElementById("phone_update")
+let phone_input = document.getElementById("phone")
+let phone_after_massage = document.getElementById("phone_after_massage")
+
+button_phone.addEventListener("click", function(){
+	
+	let phone_rex = /[0-9]{3}-[0-9]{3}-[0-9]{4}/
+	
+	if(button_phone.textContent == "Update Phone Number"){
+		editphone_div.hidden = !editphone_div.hidden;
+		phone_after_massage.textContent = "";
+	}else if(phone_rex.test(phone_input)){
+		
+		alert("Phone number has been updated!")
+	}
+	
+	
+	if(!editphone_div.hidden){
+		button_phone.textContent = "Confirm Update"
+	}else{
+		button_phone.textContent = "Update Phone Number"
+	}
+});
 
 

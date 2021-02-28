@@ -169,6 +169,23 @@ public class RequestHelper {
 			response.sendRedirect("/ExpenseReimbursementSystem/Pages/fileSuccessPage.html");
 			
 			break;
+			
+		case "/api/updatePhone":
+			
+			String email2 = getEmailFromSession(request, response);
+			Employee employee2 = getEmployeeByEmail(email2);
+			
+			employeeCrudService = new EmployeeCrudServiceImpl();
+			try {
+				employeeCrudService.updateEmployeePhoneByID(employee2.getEmpl_id(), (String) request.getParameter("phone"));
+			} catch (BusinessException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			response.sendRedirect("/ExpenseReimbursementSystem/Pages/viewProfile.html");
+			
+			break;
 		default:
 			response.setStatus(404);
 			response.getWriter().write("Sorry. The resource you have requested does not exist.");

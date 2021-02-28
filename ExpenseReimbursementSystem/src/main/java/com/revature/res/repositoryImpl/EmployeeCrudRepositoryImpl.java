@@ -40,7 +40,7 @@ public class EmployeeCrudRepositoryImpl implements EmployeeCrudRepository {
 
 	@Override
 	public Employee getEmployeeByID(long empl_id) throws BusinessException {
-Employee employee = null;
+		Employee employee = null;
 		
 		Session s = null;
 		Transaction tx = null;
@@ -63,6 +63,31 @@ Employee employee = null;
 		}
 		
 		return employee;
+	}
+
+	@Override
+	public void updateEmployeePhoneByID(long empl_id, String phone) throws BusinessException {
+		Session s = null;
+		Transaction tx = null;
+		
+		try {
+			s = HibernateSessionFactory.getSession();
+			tx = s.beginTransaction();
+		
+			s.createQuery("update Employee e set e.prim_phone = :prim_phone WHERE e.empl_id = :empl_id")
+					.setParameter("empl_id", empl_id)
+					.setParameter("prim_phone", Long.parseLong(phone.replaceAll("\\D", "")))
+					.executeUpdate();
+			
+			tx.commit();
+			
+		} catch (HibernateException e) {
+			e.printStackTrace();
+			tx.rollback();
+		}finally {
+			s.close();
+		}
+		
 	}
 
 }

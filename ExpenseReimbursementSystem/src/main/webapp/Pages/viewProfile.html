@@ -26,20 +26,22 @@
 		<p id ="discription">Total amount reimbursed this year:</p>
 		<p id ="info_amount" class="info">loading...</p>
 		
-		<div>
-			<form method="get" action="/ExpenseReimbursementSystem/Pages/filingHome.html">
-				<label for="phone">Enter your phone number:</label><br />
-	
+		<div id = "editphone_div">
+			<form id = "phone_edit_form" method="post" action="/ExpenseReimbursementSystem/api/updatePhone">
+
+				<label for="phone">Enter your new phone number:</label><br />
+
 				<input type="tel" id="phone" name="phone"
 				       pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
 				       required><br />
 				
 				<small>Format: 123-456-7890</small>
-				<button>Update Phone Number</button>
+				
 			</form>
 		</div>
 		
-		
+		<button id = "phone_update" form="phone_edit_form" type="submit">Update Phone Number</button>
+		<p id = "phone_after_massage"></p>
 		
 		<form method="get" action="/ExpenseReimbursementSystem/Pages/filingHome.html">
 			<button>Main Menu</button>
