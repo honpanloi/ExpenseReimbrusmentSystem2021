@@ -37,4 +37,23 @@ public class ReimbursementCrudServiceImpl implements ReimbursementCrudService {
 		return list;
 	}
 
+	@Override
+	public List<Reimbursement> getPendingReimbursementsSubmitedToAManager(long empl_id) throws BusinessException {
+		List<Reimbursement> list = null;
+		list = reimbursementCrudRepository.getPendingReimbursementsSubmitedToAManager(empl_id);
+		return list;
+	}
+
+	@Override
+	public void updateReimbursementStatus(long reimb_id, String reimb_status, long manager_id) throws BusinessException {
+		reimbursementCrudRepository.updateReimbursementStatus(reimb_id, reimb_status,manager_id);
+	}
+
+	@Override
+	public Reimbursement getReimbursementByID(long reimb_id) throws BusinessException {
+		Reimbursement reimbursement = null;
+		reimbursement = reimbursementCrudRepository.getReimbursementByID(reimb_id);
+		return reimbursement;
+	}
+
 }

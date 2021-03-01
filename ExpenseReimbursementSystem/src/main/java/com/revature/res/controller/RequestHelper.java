@@ -44,10 +44,13 @@ public class RequestHelper {
 			String email = getEmailFromSession(request, response);
 			Employee employee = getEmployeeByEmail(email);
 			return employee;
+		case "/api/viewEmployeeByID":
+			Employee employee4 = getEmployeeByID(request);
+			return employee4;
 		case "/api/viewManagerByEmployeeID":
 			String email1 = getEmailFromSession(request, response);
 			Employee employee1 = getEmployeeByEmail(email1);
-			Employee manager = getEmployeeByID(employee1);
+			Employee manager = getManagerByEmployee(employee1);
 			return manager;
 		case "/api/getPendingReimbursementByEmployeeID":
 			String email2 = getEmailFromSession(request, response);
@@ -59,11 +62,41 @@ public class RequestHelper {
 			Employee employee3 = getEmployeeByEmail(email3);
 			List<Reimbursement> list1 = getReimbursementByEmployeeID(employee3, true);
 			return list1;
+		case "/api/getPendingReimbursementByManagerID":
+			String email4 = getEmailFromSession(request, response);
+			Employee Manager1 = getEmployeeByEmail(email4);
+			List<Reimbursement> list2 = getPendingReimbursementByManagerID(Manager1);
+			return list2;
 		default:
 			response.setStatus(404);
 			return "Sorry. The resource you have requested does not exist.";
 		}
 		
+	}
+
+	private static List<Reimbursement> getPendingReimbursementByManagerID(Employee Manager1) {
+		List<Reimbursement> list2 = null;
+		reimbursementCrudService = new ReimbursementCrudServiceImpl();
+		try {
+			list2 = reimbursementCrudService.getPendingReimbursementsSubmitedToAManager(Manager1.getEmpl_id());
+		} catch (BusinessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return list2;
+	}
+
+	private static Employee getEmployeeByID(HttpServletRequest request) {
+		Employee employee4 =null;
+		long empl_id = Long.parseLong(request.getParameter("empl_id"));
+		employeeCrudService = new EmployeeCrudServiceImpl();
+		try {
+			employee4 = employeeCrudService.getEmployeeByID(empl_id);
+		} catch (BusinessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return employee4;
 	}
 
 	private static List<Reimbursement> getReimbursementByEmployeeID(Employee employee2, boolean isResolved) {
@@ -83,7 +116,7 @@ public class RequestHelper {
 		return list;
 	}
 
-	private static Employee getEmployeeByID(Employee employee1) {
+	private static Employee getManagerByEmployee(Employee employee1) {
 		Employee employee2 = null;
 		
 		
@@ -210,6 +243,23 @@ public class RequestHelper {
 			}
 			
 			response.sendRedirect("/ExpenseReimbursementSystem/Pages/viewProfile.html");
+			
+			break;
+		case "/api/updateReimbursement":
+			System.out.println(request.getParameter("reimb_id"));
+			long reimb_id = Long.parseLong(request.getParameter("reimb_id"));
+			String status = request.getParameter("status");
+			String email3 = getEmailFromSession(request, response);
+			Employee employee3 = getEmployeeByEmail(email3);
+			long manager_id = employee3.getEmpl_id();
+			reimbursementCrudService = new ReimbursementCrudServiceImpl();
+			
+			try {
+				reimbursementCrudService.updateReimbursementStatus(reimb_id, status, manager_id);
+			} catch (BusinessException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			
 			break;
 		default:

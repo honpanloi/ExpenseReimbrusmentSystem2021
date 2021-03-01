@@ -90,4 +90,31 @@ public class EmployeeCrudRepositoryImpl implements EmployeeCrudRepository {
 		
 	}
 
+	@Override
+	public String getEmployeeNameByID(long empl_id) throws BusinessException {
+		Employee employee = null;
+		
+		Session s = null;
+		Transaction tx = null;
+		
+		try {
+			s = HibernateSessionFactory.getSession();
+			tx = s.beginTransaction();
+		
+			employee = s.createQuery("FROM Employee e WHERE e.empl_id = :empl_id", Employee.class)
+					.setParameter("empl_id", empl_id)
+					.getSingleResult();
+			
+			tx.commit();
+			
+		} catch (HibernateException e) {
+			e.printStackTrace();
+			tx.rollback();
+		}finally {
+			s.close();
+		}
+		
+		return employee.getFirst_name()+" "+employee.getLast_name();
+	}
+
 }

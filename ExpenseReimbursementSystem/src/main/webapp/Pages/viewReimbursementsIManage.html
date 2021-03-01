@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="ISO-8859-1">
+	<title>Expense Reimbursement System</title>
+	<link rel="stylesheet" href="/ExpenseReimbursementSystem/Styles/viewReimbursement.css"></link>
+</head>
+<body>
+
+	<div id = "main_div">
+		
+		<div id = "action_div">
+			<p>Please enter the Reimbursement ID and pick an action</p>
+			<input id = "reimb_id" type="number" name="reimb_id" min = 1 required/>
+			<button id = "approve_btn">Approve</button>
+			<button id = "reject_btn">Reject</button>
+			<button id = "view_image_btn">View Image(s) associated</button>
+		</div>
+		
+		<div id = "data_holder">
+			
+		</div>
+		
+		<div id = "button_div2">
+			<form id= "main_menu_button" method="get" action="/ExpenseReimbursementSystem/Pages/managerView.html">
+				<button class = "main">Main Menu</button>
+			</form>
+		</div>
+	
+	</div>
+
+	<script src="/ExpenseReimbursementSystem/Scripts/viewReimbursementsIManage.js"></script>
+</body>
+</html>

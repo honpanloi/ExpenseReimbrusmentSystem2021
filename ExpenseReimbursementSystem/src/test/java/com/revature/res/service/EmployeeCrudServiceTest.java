@@ -76,5 +76,20 @@ class EmployeeCrudServiceTest {
 		
 	}
 	
-	
+	@Test
+	void testGetEmployeeNameByID() {
+		long empl_id = 4;
+		
+		String target = "John Fake";
+		
+		try {
+			String result = employeeCrudService.getEmployeeNameByID(empl_id);
+			
+			assertEquals(target, result);
+		} catch (BusinessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
 }

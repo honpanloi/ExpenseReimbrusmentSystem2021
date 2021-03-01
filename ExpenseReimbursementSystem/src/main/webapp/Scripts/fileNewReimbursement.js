@@ -4,8 +4,8 @@
 
 let fullname = document.getElementById("info_name");
 let empl_id = document.getElementById("info_empl_id");
-let manger_name = document.getElementById("info_manger_name");
 let amount = document.getElementById("info_amount_reimb");
+let manger_name = document.getElementById("info_manger_name");
 
 function getManager(){
 	let xhr = new XMLHttpRequest();

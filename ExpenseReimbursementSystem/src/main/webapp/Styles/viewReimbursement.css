@@ -10,10 +10,24 @@ body {
 	background-image: url("/ExpenseReimbursementSystem/Images/background.jpg");
 }
 
+p {
+	color: rgb(82, 82, 82);
+}
+
+#action_div {
+	width: 100%;
+	text-align: center;
+}
+
 #button_div {
 	width: 100%;
 	text-align: center;
 	margin-top: 5%;
+}
+
+#button_div2 {
+	width: 100%;
+	text-align: center;
 }
 
 #vPending_btn, #vResolved_btn, #main_menu_button {
@@ -34,5 +48,52 @@ button {
 	text-shadow: 1px 1px 3px #919191;
 	box-shadow: 1px 1px 5px #919191;
 	font-family: Verdana;
+	background-color: rgb(230,230,230);
 	color: rgb(82, 82, 82);
+}
+
+p.discription {
+	font-size: 10px;
+	margin-top: 1px;
+	margin-bottom: 1px;
+	padding: 1px;
+	text-align: left;
+	text-shadow: 1px 1px 1px #ebebeb;
+}
+
+p.info {
+	text-align: center;
+	margin-top: 3px;
+	margin-bottom: 3px;
+	font-size: 15px;
+	text-shadow: 1px 1px 3px #ebebeb;
+}
+
+p.manager_name {
+	text-align: center;
+	margin-top: 3px;
+	margin-bottom: 3px;
+	font-size: 15px;
+	text-shadow: 1px 1px 3px #ebebeb;
+}
+
+div.single_div {
+	width: 22%;
+	background-color: rgb(235, 235, 235);
+	padding: 20px;
+	border-radius: 1em;
+	border-color: rgb(222, 222, 222);
+	border-width: 2px;
+	border-style: solid;
+	box-shadow: 1px 1px 5px #919191;
+	margin: 15px;
+	display: inline-block;
+	
+}
+
+#data_holder {
+	padding: 1%;
+	margin-left: 5%;
+	margin-right: 5%;
+	text-align: center;
 }

@@ -1,5 +1,6 @@
 package com.revature.res.service;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.fail;
 
@@ -54,7 +55,7 @@ class ReimbursementCrudServiceTest {
 		
 		System.out.println(reimbursement);
 		
-		//impl.cleanTestReimbursement(reimbursement);
+		impl.cleanTestReimbursement(reimbursement);
 	}
 	
 	@Test
@@ -69,7 +70,7 @@ class ReimbursementCrudServiceTest {
 				System.out.println(reimbursement.toString());
 			}
 			
-			assertTrue(list.size()>3);
+			assertTrue(list.size()>1);
 		} catch (BusinessException e) {
 			assertTrue(e.getMessage().equals("The amount of reimbursement has to be $1 or more."));
 		}
@@ -92,6 +93,33 @@ class ReimbursementCrudServiceTest {
 			assertTrue(list.size()>0);
 		} catch (BusinessException e) {
 			assertTrue(e.getMessage().equals("The amount of reimbursement has to be $1 or more."));
+		}
+		
+		
+	}
+	
+	@Test
+	final void testUpdateReimbursementStatus() {
+		
+		long reimb_id = 20l;
+		String reimb_status = "Approved";
+		long manager_id = 4l;
+		
+		try {
+			
+			reimbursementCrudService.updateReimbursementStatus(reimb_id, reimb_status, manager_id);
+			
+			String updatedStatus = null;
+			Reimbursement reimbursement	= new Reimbursement();
+			
+			reimbursement = reimbursementCrudService.getReimbursementByID(reimb_id);
+			
+			updatedStatus = reimbursement.getReimb_status();
+			
+			assertEquals(reimb_status, updatedStatus);
+			
+		} catch (BusinessException e) {
+			e.printStackTrace();
 		}
 		
 		

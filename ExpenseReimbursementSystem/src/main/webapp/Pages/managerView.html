@@ -9,12 +9,23 @@
 	<div id = "main_div">
 	
 		<p>I want to:</p>
-		<button>Manage my own reimbursement requests</button>
-		<button>Manage reimbursement requests that were submitted to me</button>
+		<form id="log_out" method="get" action="/ExpenseReimbursementSystem/Pages/filingHome.html">
+            <button>Manage my own reimbursement requests</button>
+		</form>
+		
+		<form id="log_out" method="get" action="/ExpenseReimbursementSystem/Pages/viewReimbursementsIManage.html">
+            <button>Manage reimbursement requests that were submitted to me</button>
+		</form>
+		
+		
 		<button>View all resolved reimbursement requests</button>
 		<button>View all employees</button>
 		<button>View employees who I manage</button>
-		<button>View my profile</button>
+		
+		<form id="log_out" method="get" action="/ExpenseReimbursementSystem/Pages/viewProfile.html">
+            <button>View my profile</button>
+		</form>
+		
 		<form id="log_out" method="get" action="/ExpenseReimbursementSystem/api/logout">
             <button>Log out</button>
 		</form>

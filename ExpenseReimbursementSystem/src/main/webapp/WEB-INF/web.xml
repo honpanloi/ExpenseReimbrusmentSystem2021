@@ -34,6 +34,7 @@
   <filter-mapping>
     <filter-name>ManagerFilter</filter-name>
     <url-pattern>/Pages/managerView.html</url-pattern>
+    <url-pattern>/Pages/viewReimbursementsIManage.html</url-pattern>
   </filter-mapping>
   <session-config>
     <session-timeout>15</session-timeout>

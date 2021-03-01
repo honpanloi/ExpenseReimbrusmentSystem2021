@@ -8,7 +8,7 @@ public class Tools {
 	public static String getPrintedCurrentDate() {
 		
 		Date currentDate = new Date();
-		SimpleDateFormat format1 = new SimpleDateFormat("yyyy-MMM-dd EEEE z Z HH:mm:ss");
+		SimpleDateFormat format1 = new SimpleDateFormat("yyyy-MMM-dd z HH:mm:ss");
 		
 		return format1.format(currentDate).toString();
 	}

@@ -35,4 +35,11 @@ public class EmployeeCrudServiceImpl implements EmployeeCrudService {
 		
 	}
 
+	@Override
+	public String getEmployeeNameByID(long empl_id) throws BusinessException {
+		String name = null;
+		name = employeeCrudRepository.getEmployeeNameByID(empl_id);
+		return name;
+	}
+
 }
