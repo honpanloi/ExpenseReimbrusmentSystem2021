@@ -2,6 +2,8 @@ package com.revature.res.service;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.List;
+
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
@@ -31,7 +33,6 @@ class EmployeeCrudServiceTest {
 		
 		assertNotNull(employee);
 		
-		System.out.println(employee.toString());
 	}
 	
 	@Test
@@ -49,7 +50,6 @@ class EmployeeCrudServiceTest {
 		
 		assertNotNull(employee);
 		
-		System.out.println(employee.toString());
 	}
 	
 	@Test
@@ -86,6 +86,45 @@ class EmployeeCrudServiceTest {
 			String result = employeeCrudService.getEmployeeNameByID(empl_id);
 			
 			assertEquals(target, result);
+		} catch (BusinessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+	
+	@Test
+	void testAllEmployees() {
+		
+		try {
+			
+			List<Employee> allEmployees = null;
+			allEmployees = employeeCrudService.getAllEmployees();
+			
+			assertNotNull(allEmployees);
+			
+
+		} catch (BusinessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+	
+	@Test
+	void testGetEmployeesManagerByAManager() {
+		
+		try {
+			
+			List<Employee> employeesManaged = null;
+			employeesManaged = employeeCrudService.getEmployeesManagerByAManager(4l);
+			
+			assertNotNull(employeesManaged);
+			
+//			for (Employee employee : employeesManaged) {
+//			System.out.println(employee);
+//			}
+			
 		} catch (BusinessException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

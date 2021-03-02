@@ -67,11 +67,60 @@ public class RequestHelper {
 			Employee Manager1 = getEmployeeByEmail(email4);
 			List<Reimbursement> list2 = getPendingReimbursementByManagerID(Manager1);
 			return list2;
+		case "/api/getAllResolvedReimbursements":
+			List<Reimbursement> list3 = getAllResovledReimbursement();
+			return list3;
+		case "/api/getAllEmployees":
+			List<Employee> allEmployees = getAllEmployees();
+			return allEmployees;
+		case "/api/getEmployeesManaged":
+			String email5 = getEmailFromSession(request, response);
+			Employee Manager2 = getEmployeeByEmail(email5);
+			List<Employee> employeesManaged = getEmployeeManaged(Manager2);
+			return employeesManaged;
 		default:
 			response.setStatus(404);
 			return "Sorry. The resource you have requested does not exist.";
 		}
 		
+	}
+
+	private static List<Employee> getEmployeeManaged(Employee Manager2) {
+		List<Employee> employeesManaged = null;
+		employeeCrudService = new EmployeeCrudServiceImpl();
+		try {
+			employeesManaged = employeeCrudService.getEmployeesManagerByAManager(Manager2.getEmpl_id());
+		} catch (BusinessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return employeesManaged;
+	}
+
+	private static List<Employee> getAllEmployees() {
+		List<Employee> allEmployees = null;
+		
+		employeeCrudService = new EmployeeCrudServiceImpl();
+		
+		try {
+			allEmployees = employeeCrudService.getAllEmployees();
+		} catch (BusinessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return allEmployees;
+	}
+
+	private static List<Reimbursement> getAllResovledReimbursement() {
+		List<Reimbursement> list3 = null;
+		reimbursementCrudService = new ReimbursementCrudServiceImpl();
+		try {
+			list3 = reimbursementCrudService.getAllResolvedReimbursement();
+		} catch (BusinessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return list3;
 	}
 
 	private static List<Reimbursement> getPendingReimbursementByManagerID(Employee Manager1) {

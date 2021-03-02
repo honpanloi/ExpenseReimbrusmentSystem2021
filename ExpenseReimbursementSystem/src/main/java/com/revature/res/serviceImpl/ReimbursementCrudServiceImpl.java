@@ -56,4 +56,11 @@ public class ReimbursementCrudServiceImpl implements ReimbursementCrudService {
 		return reimbursement;
 	}
 
+	@Override
+	public List<Reimbursement> getAllResolvedReimbursement() throws BusinessException {
+		List<Reimbursement> list = null;
+		list = reimbursementCrudRepository.getAllResolvedReimbursement();
+		return list;
+	}
+
 }

@@ -20,7 +20,7 @@ approve_btn.addEventListener("click", function(){
 		single_divs[0].parentNode.removeChild(single_divs[0]);
 	}
 	
-	setTimeout(location.reload.bind(location), 500);
+	setTimeout(location.reload.bind(location), 300);
 })
 
 reject_btn.addEventListener("click", function(){
@@ -37,7 +37,7 @@ reject_btn.addEventListener("click", function(){
 		single_divs[0].parentNode.removeChild(single_divs[0]);
 	}
 	
-	setTimeout(location.reload.bind(location), 500);
+	setTimeout(location.reload.bind(location), 300);
 })
 
 

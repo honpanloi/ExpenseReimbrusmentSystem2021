@@ -1,6 +1,7 @@
 package com.revature.res.service;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.fail;
 
@@ -53,8 +54,6 @@ class ReimbursementCrudServiceTest {
 			fail();
 		}
 		
-		System.out.println(reimbursement);
-		
 		impl.cleanTestReimbursement(reimbursement);
 	}
 	
@@ -66,9 +65,7 @@ class ReimbursementCrudServiceTest {
 		try {
 			List<Reimbursement> list = reimbursementCrudService.getPendingReimbursementsByEmployeeID(empl_id);
 			
-			for (Reimbursement reimbursement : list) {
-				System.out.println(reimbursement.toString());
-			}
+
 			
 			assertTrue(list.size()>1);
 		} catch (BusinessException e) {
@@ -85,10 +82,6 @@ class ReimbursementCrudServiceTest {
 		
 		try {
 			List<Reimbursement> list = reimbursementCrudService.getResolvedReimbursementsByEmployeeID(empl_id);
-			
-			for (Reimbursement reimbursement : list) {
-				System.out.println(reimbursement.toString());
-			}
 			
 			assertTrue(list.size()>0);
 		} catch (BusinessException e) {
@@ -117,6 +110,27 @@ class ReimbursementCrudServiceTest {
 			updatedStatus = reimbursement.getReimb_status();
 			
 			assertEquals(reimb_status, updatedStatus);
+			
+		} catch (BusinessException e) {
+			e.printStackTrace();
+		}
+		
+		
+	}
+	
+	@Test
+	final void testGetAllResolvedReimbursement() {
+		
+		
+		try {
+			
+			List<Reimbursement> list = reimbursementCrudService.getAllResolvedReimbursement();
+			
+			assertNotNull(list);
+			
+			for (Reimbursement reimbursement : list) {
+				System.out.println(reimbursement.toString());
+			}
 			
 		} catch (BusinessException e) {
 			e.printStackTrace();

@@ -1,5 +1,7 @@
 package com.revature.res.repositoryImpl;
 
+import java.util.List;
+
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -115,6 +117,58 @@ public class EmployeeCrudRepositoryImpl implements EmployeeCrudRepository {
 		}
 		
 		return employee.getFirst_name()+" "+employee.getLast_name();
+	}
+
+	@Override
+	public List<Employee> getAllEmployees() throws BusinessException {
+		List<Employee> allEmployees = null;
+		
+		Session s = null;
+		Transaction tx = null;
+		
+		try {
+			s = HibernateSessionFactory.getSession();
+			tx = s.beginTransaction();
+		
+			allEmployees = s.createQuery("from Employee", Employee.class).getResultList();
+			
+			tx.commit();
+			
+		} catch (HibernateException e) {
+			e.printStackTrace();
+			tx.rollback();
+		}finally {
+			s.close();
+		}
+		
+		return allEmployees;
+	}
+
+	@Override
+	public List<Employee> getEmployeesManagerByAManager(long manager_empl_id) throws BusinessException {
+		List<Employee> employeesManaged = null;
+		
+		Session s = null;
+		Transaction tx = null;
+		
+		try {
+			s = HibernateSessionFactory.getSession();
+			tx = s.beginTransaction();
+		
+			employeesManaged = s.createQuery("from Employee e where e.direct_manager_empl_id = :direct_manager_empl_id", Employee.class)
+					.setParameter("direct_manager_empl_id", manager_empl_id)
+					.getResultList();
+			
+			tx.commit();
+			
+		} catch (HibernateException e) {
+			e.printStackTrace();
+			tx.rollback();
+		}finally {
+			s.close();
+		}
+		
+		return employeesManaged;
 	}
 
 }

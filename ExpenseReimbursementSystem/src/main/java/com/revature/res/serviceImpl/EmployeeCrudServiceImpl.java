@@ -1,5 +1,7 @@
 package com.revature.res.serviceImpl;
 
+import java.util.List;
+
 import com.revature.res.exception.BusinessException;
 import com.revature.res.models.Employee;
 import com.revature.res.repository.EmployeeCrudRepository;
@@ -40,6 +42,20 @@ public class EmployeeCrudServiceImpl implements EmployeeCrudService {
 		String name = null;
 		name = employeeCrudRepository.getEmployeeNameByID(empl_id);
 		return name;
+	}
+
+	@Override
+	public List<Employee> getAllEmployees() throws BusinessException {
+		List<Employee> allEmployees = null;
+		allEmployees = employeeCrudRepository.getAllEmployees();
+		return allEmployees;
+	}
+
+	@Override
+	public List<Employee> getEmployeesManagerByAManager(long manager_empl_id) throws BusinessException {
+		List<Employee> employeesManaged = null;
+		employeesManaged = employeeCrudRepository.getEmployeesManagerByAManager(manager_empl_id);
+		return employeesManaged;
 	}
 
 }

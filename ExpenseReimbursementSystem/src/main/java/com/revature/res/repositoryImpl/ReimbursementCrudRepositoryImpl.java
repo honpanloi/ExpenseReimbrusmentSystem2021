@@ -195,4 +195,30 @@ public class ReimbursementCrudRepositoryImpl implements ReimbursementCrudReposit
 		return reimbursement;
 	}
 
+	@Override
+	public List<Reimbursement> getAllResolvedReimbursement() throws BusinessException {
+		List<Reimbursement> list = null;
+		
+		Session s = null;
+		Transaction tx = null;
+		
+		try {
+			s = HibernateSessionFactory.getSession();
+			tx = s.beginTransaction();
+		
+			list = s.createQuery("from Reimbursement r where r.reimb_status != 'Pending'", Reimbursement.class)
+					.getResultList();
+			
+			tx.commit();
+			
+		} catch (HibernateException e) {
+			e.printStackTrace();
+			tx.rollback();
+		}finally {
+			s.close();
+		}
+		
+		return list;
+	}
+
 }
