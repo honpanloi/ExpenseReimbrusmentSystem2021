@@ -63,4 +63,11 @@ public class ReimbursementCrudServiceImpl implements ReimbursementCrudService {
 		return list;
 	}
 
+	@Override
+	public List<Reimbursement> getReimbursementByOwnerID(Long empl_id) throws BusinessException {
+		List<Reimbursement> list = null;
+		list = reimbursementCrudRepository.getReimbursementByOwnerID(empl_id);
+		return list;
+	}
+
 }

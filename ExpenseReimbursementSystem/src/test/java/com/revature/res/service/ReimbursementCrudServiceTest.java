@@ -128,9 +128,9 @@ class ReimbursementCrudServiceTest {
 			
 			assertNotNull(list);
 			
-			for (Reimbursement reimbursement : list) {
-				System.out.println(reimbursement.toString());
-			}
+//			for (Reimbursement reimbursement : list) {
+//				System.out.println(reimbursement.toString());
+//			}
 			
 		} catch (BusinessException e) {
 			e.printStackTrace();
@@ -139,4 +139,24 @@ class ReimbursementCrudServiceTest {
 		
 	}
 
+	@Test
+	final void testGetReimbursementByOwnerID() {
+		
+		
+		try {
+			
+			List<Reimbursement> list = reimbursementCrudService.getReimbursementByOwnerID(7l);
+			
+			assertNotNull(list);
+			
+//			for (Reimbursement reimbursement : list) {
+//				System.out.println(reimbursement.toString());
+//			}
+			
+		} catch (BusinessException e) {
+			e.printStackTrace();
+		}
+		
+		
+	}
 }

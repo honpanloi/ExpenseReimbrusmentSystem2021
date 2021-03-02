@@ -13,4 +13,5 @@ public interface ReimbursementCrudService {
 	void updateReimbursementStatus(long reimb_id, String reimb_status, long manager_id) throws BusinessException;
 	Reimbursement getReimbursementByID(long reimb_id) throws BusinessException;
 	List<Reimbursement> getAllResolvedReimbursement() throws BusinessException;
+	List<Reimbursement> getReimbursementByOwnerID(Long empl_id) throws BusinessException;
 }

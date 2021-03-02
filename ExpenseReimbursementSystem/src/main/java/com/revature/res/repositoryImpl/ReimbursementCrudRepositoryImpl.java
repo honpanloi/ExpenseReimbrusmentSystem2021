@@ -221,4 +221,31 @@ public class ReimbursementCrudRepositoryImpl implements ReimbursementCrudReposit
 		return list;
 	}
 
+	@Override
+	public List<Reimbursement> getReimbursementByOwnerID(Long empl_id) throws BusinessException {
+		List<Reimbursement> list = null;
+		
+		Session s = null;
+		Transaction tx = null;
+		
+		try {
+			s = HibernateSessionFactory.getSession();
+			tx = s.beginTransaction();
+		
+			list = s.createQuery("from Reimbursement r where r.belongs_to_empl_id = :belongs_to_empl_id", Reimbursement.class)
+					.setParameter("belongs_to_empl_id", empl_id)
+					.getResultList();
+			
+			tx.commit();
+			
+		} catch (HibernateException e) {
+			e.printStackTrace();
+			tx.rollback();
+		}finally {
+			s.close();
+		}
+		
+		return list;
+	}
+
 }

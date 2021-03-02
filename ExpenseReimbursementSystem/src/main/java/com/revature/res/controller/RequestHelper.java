@@ -78,6 +78,19 @@ public class RequestHelper {
 			Employee Manager2 = getEmployeeByEmail(email5);
 			List<Employee> employeesManaged = getEmployeeManaged(Manager2);
 			return employeesManaged;
+		case "/api/getReimbursementByOwnerID":
+			System.out.println(request.getParameter("empl_id"));
+			final long empl_id = Long.parseLong(request.getParameter("empl_id"));
+			
+			List<Reimbursement> employeeReimbursements = null;
+			reimbursementCrudService = new ReimbursementCrudServiceImpl();
+			try {
+				employeeReimbursements = reimbursementCrudService.getReimbursementByOwnerID(empl_id);
+			} catch (BusinessException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			return employeeReimbursements;
 		default:
 			response.setStatus(404);
 			return "Sorry. The resource you have requested does not exist.";
