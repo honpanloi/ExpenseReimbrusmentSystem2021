@@ -49,4 +49,14 @@
     <servlet-name>FilingHomeAJAXServlet</servlet-name>
     <url-pattern>/fileNewRequest</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ImageUploadServlet</display-name>
+    <servlet-name>ImageUploadServlet</servlet-name>
+    <servlet-class>com.revature.res.controller.ImageUploadServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ImageUploadServlet</servlet-name>
+    <url-pattern>/ImageUploadServlet</url-pattern>
+  </servlet-mapping>
 </web-app>
