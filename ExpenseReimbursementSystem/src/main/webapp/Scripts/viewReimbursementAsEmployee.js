@@ -28,7 +28,7 @@ let manger_name = document.getElementsByClassName("manager_name")
 function getManager(){
 	let xhr = new XMLHttpRequest();
 
-	xhr.open('GET', 'http://localhost:8080/ExpenseReimbursementSystem/api/viewManagerByEmployeeID')
+	xhr.open('GET', 'http://3.141.97.16:8088/ExpenseReimbursementSystem/api/viewManagerByEmployeeID')
 	xhr.send()
 	
 	xhr.onreadystatechange = function(){
@@ -51,7 +51,7 @@ function getManager(){
 function getPeding(){
 	let xhr = new XMLHttpRequest();
 
-	xhr.open('GET', 'http://localhost:8080/ExpenseReimbursementSystem/api/getPendingReimbursementByEmployeeID')
+	xhr.open('GET', 'http://3.141.97.16:8088/ExpenseReimbursementSystem/api/getPendingReimbursementByEmployeeID')
 	xhr.send()
 	
 	xhr.onreadystatechange = function(){
@@ -125,7 +125,7 @@ function getPeding(){
 function getResovled(){
 	let xhr = new XMLHttpRequest();
 
-	xhr.open('GET', 'http://localhost:8080/ExpenseReimbursementSystem/api/getResolvedReimbursementByEmployeeID')
+	xhr.open('GET', 'http://3.141.97.16:8088/ExpenseReimbursementSystem/api/getResolvedReimbursementByEmployeeID')
 	xhr.send()
 	
 	xhr.onreadystatechange = function(){
