@@ -10,7 +10,7 @@ let manger_name = document.getElementById("info_manger_name");
 function getManager(){
 	let xhr = new XMLHttpRequest();
 
-	xhr.open('GET', 'http://localhost:8080/ExpenseReimbursementSystem/api/viewManagerByEmployeeID')
+	xhr.open('GET', 'http://3.141.97.16:8088/ExpenseReimbursementSystem/api/viewManagerByEmployeeID')
 	xhr.send()
 	
 	xhr.onreadystatechange = function(){
@@ -28,7 +28,7 @@ function getManager(){
 function getEmployee(){
 	let xhr = new XMLHttpRequest();
 
-	xhr.open('GET', 'http://localhost:8080/ExpenseReimbursementSystem/api/viewProfile')
+	xhr.open('GET', 'http://3.141.97.16:8088/ExpenseReimbursementSystem/api/viewProfile')
 	xhr.send()
 	
 	xhr.onreadystatechange = function(){
