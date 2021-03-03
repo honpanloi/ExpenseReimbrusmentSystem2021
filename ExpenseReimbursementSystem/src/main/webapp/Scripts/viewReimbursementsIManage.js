@@ -10,7 +10,7 @@ approve_btn.addEventListener("click", function(){
 	
 	if(reimb_id){
 		let xhr1 = new XMLHttpRequest()
-		xhr1.open('POST', 'http://localhost:8080/ExpenseReimbursementSystem/api/updateReimbursement?reimb_id='+reimb_id.value+'&status=Approved')
+		xhr1.open('POST', 'http://3.141.97.16:8088/ExpenseReimbursementSystem/api/updateReimbursement?reimb_id='+reimb_id.value+'&status=Approved')
 		xhr1.send()
 		
 	}
@@ -27,7 +27,7 @@ reject_btn.addEventListener("click", function(){
 	
 	if(reimb_id){
 		let xhr1 = new XMLHttpRequest()
-		xhr1.open('POST', 'http://localhost:8080/ExpenseReimbursementSystem/api/updateReimbursement?reimb_id='+reimb_id.value+'&status=Rejected')
+		xhr1.open('POST', 'http://3.141.97.16:8088/ExpenseReimbursementSystem/api/updateReimbursement?reimb_id='+reimb_id.value+'&status=Rejected')
 		xhr1.send()
 		
 	}
@@ -45,7 +45,7 @@ let empl_name = null;
 function getEmployeeName(empl_id){
 	let xhr1 = new XMLHttpRequest()
 
-	xhr1.open('GET', 'http://localhost:8080/ExpenseReimbursementSystem/api/viewEmployeeByID?empl_id='+empl_id)
+	xhr1.open('GET', 'http://3.141.97.16:8088/ExpenseReimbursementSystem/api/viewEmployeeByID?empl_id='+empl_id)
 	xhr1.send()
 	
 	xhr1.onreadystatechange = function(){
@@ -67,7 +67,7 @@ let i = "info"
 function getReimbursement(){
 	let xhr = new XMLHttpRequest()
 
-	xhr.open('GET', 'http://localhost:8080/ExpenseReimbursementSystem/api/getPendingReimbursementByManagerID')
+	xhr.open('GET', 'http://3.141.97.16:8088/ExpenseReimbursementSystem/api/getPendingReimbursementByManagerID')
 	xhr.send()
 	
 	xhr.onreadystatechange = function(){
