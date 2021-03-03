@@ -26,7 +26,7 @@ view_btn.addEventListener("click", function(){
 		
 		let xhr = new XMLHttpRequest()
 
-		xhr.open('GET', 'http://localhost:8080/ExpenseReimbursementSystem/api/getReimbursementByOwnerID?empl_id='+empl_id.value)
+		xhr.open('GET', 'http://3.141.97.16:8088/ExpenseReimbursementSystem/api/getReimbursementByOwnerID?empl_id='+empl_id.value)
 		xhr.send()
 		
 		xhr.onreadystatechange = function(){
@@ -118,7 +118,7 @@ let i = "info"
 function getAllEmployees(){
 	let xhr = new XMLHttpRequest()
 
-	xhr.open('GET', 'http://localhost:8080/ExpenseReimbursementSystem/api/getEmployeesManaged')
+	xhr.open('GET', 'http://3.141.97.16:8088/ExpenseReimbursementSystem/api/getEmployeesManaged')
 	xhr.send()
 	
 	xhr.onreadystatechange = function(){
