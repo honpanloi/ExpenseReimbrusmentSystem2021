@@ -13,7 +13,7 @@ let amount = document.getElementById("info_amount");
 function getEmployee(){
 	let xhr = new XMLHttpRequest();
 
-	xhr.open('GET', 'http://localhost:8080/ExpenseReimbursementSystem/api/viewProfile')
+	xhr.open('GET', 'http://3.141.97.16:8088/ExpenseReimbursementSystem/api/viewProfile')
 	xhr.send()
 	
 	xhr.onreadystatechange = function(){
