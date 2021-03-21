@@ -1,6 +1,7 @@
 package com.revature.res.controller;
 
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.file.Paths;
 
@@ -14,15 +15,15 @@ import javax.servlet.http.Part;
 
 import com.amazonaws.AmazonClientException;
 import com.amazonaws.AmazonServiceException;
-import com.amazonaws.regions.Regions;
 import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.AmazonS3ClientBuilder;
+import com.revature.res.util.Tools;
 
 /**
  * Servlet implementation class ImageUploadServlet
  */
-@WebServlet("/upload-file")
-@MultipartConfig(location = "C:\\Users\\honpa\\Documents\\java_examples")
+@WebServlet("/api/upload")
+@MultipartConfig(location = "C:\\Users\\honpa\\Documents\\java_examples\\")
 public class ImageUploadServlet extends HttpServlet {
 	private static final long serialVersionUID = 1345234823L;
        
@@ -46,23 +47,34 @@ public class ImageUploadServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//Getting the file input stream
-		Part filePart = request.getPart("myFile1");
-		String fileName = Paths.get(filePart.getSubmittedFileName()).getFileName().toString();
-		String file_path = "C:\\Users\\honpa\\Documents\\java_examples" + fileName;
-		File file = new File(file_path);
 		
+		//Getting the part from the request
+		Part filePart = request.getPart("photo");
+		//rename the
+		String fileName = Paths.get(filePart.getSubmittedFileName()).getFileName().toString();
+		String newFileName = Tools.getPrintedCurrentDateForFiles()+fileName;
+		
+		//create a temperate file
+		//File newfile = File.createTempFile("temp", ".png");
+		File newfile = new File(fileName);
+		
+		//make a output stream and target the newfile
+		FileOutputStream fileOutputStream = new FileOutputStream(newfile);
+		
+		//write the newfile with the input stream the i
+		fileOutputStream.write(filePart.getInputStream().readAllBytes());
+		
+		//close the output stream
+		fileOutputStream.close();
+
 		
 		
 		//Uploading to the bucket
-		String bucket_name = "p1jan25bucket";
+		String bucket_name = "honpan.images.bucket";
 		System.out.format("Uploading %s to S3 bucket %s...\n",  fileName, bucket_name);
-		final AmazonS3 s3 = AmazonS3ClientBuilder
-				.standard()
-				.withRegion(Regions.US_EAST_2)
-				.build();
+		final AmazonS3 s3 = AmazonS3ClientBuilder.defaultClient();
 		try {
-			s3.putObject(bucket_name, "Wow such a great file name", file);
+			s3.putObject(bucket_name, newFileName, newfile);
 		} catch (AmazonServiceException e) {
 			System.err.println(e.getErrorMessage());
 			System.exit(1);

@@ -12,4 +12,12 @@ public class Tools {
 		
 		return format1.format(currentDate).toString();
 	}
+	
+	public static String getPrintedCurrentDateForFiles() {
+		
+		Date currentDate = new Date();
+		SimpleDateFormat format1 = new SimpleDateFormat("yyyy_MMM_dd_HH_mm_ss");
+		
+		return format1.format(currentDate).toString();
+	}
 }
