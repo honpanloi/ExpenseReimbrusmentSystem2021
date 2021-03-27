@@ -79,3 +79,5 @@
 * After you successfully have the project running on your browser, it should be very intuitive on how to use the app. You can login as an employee to file reimbursement requests. You can also login as a manager to manager requests that were filed by the employees you manage.
 
 
+## License Information
+* Open-source. For demo purposes. Not for commercial use.
