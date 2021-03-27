@@ -15,7 +15,7 @@
 * Debug
 * Project presentation
 
-## Technologies Used
+## Technologies Used / Environment
 * Maven - 2.22.1
 * Log4j - 1.2.17
 * PostgreSQL - 42.2.5
